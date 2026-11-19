@@ -19,14 +19,27 @@
     <div class="page-wrapper">
       <!------- Header / Branding ------->
       <header class="site-header">
+        <div class="header-controls">
+          <button
+            type="button"
+            id="directionToggle"
+            class="direction-toggle-btn"
+            aria-pressed="false"
+            aria-label="Switch layout direction to right-to-left"
+          >
+            <i class="fa-solid fa-right-left" aria-hidden="true"></i>
+            <span>RTL Mode</span>
+          </button>
+        </div>
         <img src="img/loreal-logo.png" alt="L'Oréal Logo" class="logo" />
         <h1 class="site-title">Smart Routine &amp; Product Advisor</h1>
       </header>
 
-      <!-- Category Filter -->
+      <!-- Category Filter & Product Search -->
       <div class="search-section">
-        <select id="categoryFilter">
+        <select id="categoryFilter" aria-label="Filter by category">
           <option value="" disabled selected>Choose a Category</option>
+          <option value="all">All Categories</option>
           <option value="cleanser">Cleansers</option>
           <option value="moisturizer">Moisturizers & Treatments</option>
           <option value="haircare">Haircare</option>
@@ -37,6 +50,19 @@
           <option value="suncare">Suncare</option>
           <option value="fragrance">Fragrance</option>
         </select>
+
+        <div class="search-input-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+          <label for="productSearch" class="visually-hidden">
+            Search products by name or keyword
+          </label>
+          <input
+            id="productSearch"
+            type="search"
+            placeholder="Search products by name or keyword…"
+            autocomplete="off"
+          />
+        </div>
       </div>
 
       <!-- Products Grid -->
@@ -44,7 +70,12 @@
 
       <!-- Selected Products -->
       <div class="selected-products">
-        <h2>Selected Products</h2>
+        <div class="selected-products-header">
+          <h2>Selected Products</h2>
+          <button type="button" id="clearSelectedBtn" class="clear-btn" hidden>
+            <i class="fa-solid fa-trash-can" aria-hidden="true"></i> Clear All
+          </button>
+        </div>
         <div id="selectedProductsList"></div>
         <button id="generateRoutine" class="generate-btn">
           <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Routine
